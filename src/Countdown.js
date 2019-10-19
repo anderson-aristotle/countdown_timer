@@ -2,11 +2,16 @@ import React, { Component } from "react";
 import "./App.css";
 
 class Countdown extends Component {
+  //create state for Countdown Component
   state = {
     timerOn: false,
     timerStart: 0,
     timerTIme: 0
   };
+
+  // start timer function that turns countdown on
+  // updates the UI every .10 ms with new time
+  // clear UI when timer reaches zero
 
   startTimer = () => {
     this.setState({
@@ -60,6 +65,8 @@ class Countdown extends Component {
       }
     }
   };
+
+  // show buttons for countdown timer
 
   render() {
     return (
