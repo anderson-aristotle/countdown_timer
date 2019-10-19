@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "constants";
 
 class Countdown extends Component {
   state = {
@@ -28,10 +27,12 @@ class Countdown extends Component {
       }
     }, 10);
   };
+
   stopTimer = () => {
     clearInterval(this.timer);
     this.setState({ timerOn: false });
   };
+
   resetTimer = () => {
     if (this.state.timeOn === false) {
       this.setState({
@@ -39,17 +40,48 @@ class Countdown extends Component {
       });
     }
   };
+
+  adjustTimer = input => {
+    const { timerTime, timerOn } = this.state;
+    const max = 216000000;
+    if (!timerOn) {
+      if (input === "incHours" && timerTime + 3600000 < max) {
+        this.setState({ timerTime: timerTime + 3600000 });
+      } else if (input === "decHours" && timerTime - 3600000 >= 0) {
+        this.setState({ timerTime: timerTime - 3600000 });
+      } else if (input === "incMinutes" && timerTime + 60000 < max) {
+        this.setState({ timerTime: timerTime + 60000 });
+      } else if (input === "decMinutes" && timerTime - 60000 >= 0) {
+        this.setState({ timerTime: timerTime - 60000 });
+      } else if (input === "incSeconds" && timerTime + 1000 < max) {
+        this.setState({ timerTime: timerTime + 1000 });
+      } else if (input === "decSeconds" && timerTime - 1000 >= 0) {
+        this.setState({ timerTime: timerTime - 1000 });
+      }
+    }
+  };
+
   render() {
     return (
-      <div className="Countdown-label">
-        Hours : Minutes : Seconds
-        <div className="Countdown-header">Countdown</div>
-        const {(timerTime, timeStart, timerOn)} = this.state; lets seconds =
-        ("0" + Math.floor((timerTime / 1000) % 60).slice(-2); let minutes = ("0"
-        + Math.floor((timerTime / 6000) % 60)).splice(-2) let hours = ("0" +
-        Math.floor ((timerTIme / 3600000) % 60)).splice(-2);
-        <button onClick={() => this.adjustTimer("incHours")}>&#8679</button>;
-      </div>
+      <React.Fragment>
+        <div className="Countdown-label">Hours : Minutes : Seconds</div>
+        <div className="Countdown-display">
+          <button onClick={() => this.adjustTimer("incHours")}>&#8679;</button>
+          <button onClick={() => this.adjustTimer("incMinutes")}>
+            &#8679;
+          </button>
+          <button onClick={() => this.adjustTimer("incSeconds")}>
+            &#8679;
+          </button>
+          <button onClick={() => this.adjustTimer("decHours")}>&#8681;</button>
+          <button onClick={() => this.adjustTimer("decMinutes")}>
+            &#8681;
+          </button>
+          <button onClick={() => this.adjustTimer("decSeconds")}>
+            &#8681;
+          </button>
+        </div>
+      </React.Fragment>
     );
   }
 }
