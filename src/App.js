@@ -7,11 +7,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="Time Is Money"></div>
-        <div className="Timers">
-          <Stopwatch />
-          <Countdown />
-        </div>
+        <h2 className="timeIsMoney">Time is Now</h2>
+
+        <Stopwatch />
+        <Countdown />
       </div>
     );
   }
