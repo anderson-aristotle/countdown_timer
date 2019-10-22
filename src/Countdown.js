@@ -69,27 +69,7 @@ class Countdown extends Component {
   // show buttons for countdown timer
 
   render() {
-    return (
-      <React.Fragment>
-        <div className="Countdown-label">Hours : Minutes : Seconds</div>
-        <div className="Countdown-display">
-          <button onClick={() => this.adjustTimer("incHours")}>&#8679;</button>
-          <button onClick={() => this.adjustTimer("incMinutes")}>
-            &#8679;
-          </button>
-          <button onClick={() => this.adjustTimer("incSeconds")}>
-            &#8679;
-          </button>
-          <button onClick={() => this.adjustTimer("decHours")}>&#8681;</button>
-          <button onClick={() => this.adjustTimer("decMinutes")}>
-            &#8681;
-          </button>
-          <button onClick={() => this.adjustTimer("decSeconds")}>
-            &#8681;
-          </button>
-        </div>
-      </React.Fragment>
-    );
+    return <React.Fragment></React.Fragment>;
   }
 }
 export default Countdown;
