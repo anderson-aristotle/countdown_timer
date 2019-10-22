@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import "./App.css";
+import { unionTypeAnnotation } from "@babel/types";
 
 class Stopwatch extends Component {
   // set state
@@ -50,6 +51,9 @@ class Stopwatch extends Component {
         {/* stop button */}
         {this.state.timerOn === true && (
           <button onClick={this.stopTimer}>Stop</button>
+        )}
+        {this.state.timerOn === fasle && this.state.timerTime > 0 && (
+          <button onClick={this.startTimer}>Resume</button>
         )}
       </div>
     );
