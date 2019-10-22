@@ -55,6 +55,9 @@ class Stopwatch extends Component {
         {this.state.timerOn === false && this.state.timerTime > 0 && (
           <button onClick={this.startTimer}>Resume</button>
         )}
+        {this.state.timerOn === false && this.state.timerTime > 0 && (
+          <button onClick={this.resetTimer}>Reset</button>
+        )}
       </div>
     );
   }
