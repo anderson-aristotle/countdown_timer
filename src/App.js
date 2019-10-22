@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import Stopwatch from "./Stopwatch";
-import Countdown from "./Countdown";
 
 class App extends Component {
   render() {
@@ -10,7 +9,6 @@ class App extends Component {
         <h2 className="timeIsMoney">Time is Now</h2>
 
         <Stopwatch />
-        <Countdown />
       </div>
     );
   }
