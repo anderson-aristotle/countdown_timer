@@ -10,7 +10,6 @@ class Stopwatch extends Component {
     timerStart: 0,
     timerTime: 0
   };
-  // set the in state memory of StopWatch
   startTimer = () => {
     this.setState({
       timerOn: true,
@@ -28,8 +27,9 @@ class Stopwatch extends Component {
     this.setState({ timerOn: false });
     clearInterval(this.timer);
   };
+
   resetTimer = () => {
-    this.setStare({
+    this.setState({
       timerStart: 0,
       timerTime: 0
     });
@@ -41,23 +41,23 @@ class Stopwatch extends Component {
     let seconds = ("0" + (Math.floor((timerTime / 1000) % 60) % 60)).slice(-2);
     let minutes = ("0" + Math.floor((timerTime / 60000) % 60)).slice(-2);
     let hours = ("0" + Math.floor((timerTime / 3600000) % 60)).slice(-2);
+
     return (
       <div className="Stopwatch-display">
         {hours} : {minutes} : {seconds} : {centiseconds}
-        {/* start button */}
         {this.state.timerOn === false && this.state.timerTime === 0 && (
           <button onClick={this.startTimer}>Start</button>
         )}
-        {/* stop button */}
         {this.state.timerOn === true && (
           <button onClick={this.stopTimer}>Stop</button>
         )}
         {this.state.timerOn === false && this.state.timerTime > 0 && (
           <button onClick={this.startTimer}>Resume</button>
         )}
-        {this.state.timerOn === false && this.state.timerTime > 0 && (
-          <button onClick={this.resetTimer}>Reset</button>
-        )}
+        {(timerOn === false || timerTime < 1000) &&
+          (timerStart !== timerTime && timerStart > 0) && (
+            <button onClick={this.resetTimer}>Reset</button>
+          )}
       </div>
     );
   }
